@@ -107,12 +107,12 @@ jobs:
               output=$(python3 ipatool-py/main.py --json download -o ipaDown -s http://127.0.0.1:9000 --appId ${{ github.event.inputs.id }} $appVerCmd)
             fi
             echo "Got Downloading JSON result: $output"
-            echo "::set-output name=needIPARelease::1"
-            echo "::set-output name=appName::$(echo "$output" | jq -r '.appName')"
-            echo "::set-output name=appBundleId::$(echo "$output" | jq -r '.appBundleId')"
-            echo "::set-output name=appVer::$(echo "$output" | jq -r '.appVer')"
-            echo "::set-output name=appId::$(echo "$output" | jq -r '.appId')"
-            echo "::set-output name=appVerId::$(echo "$output" | jq -r '.appVerId')"
+echo "set-output name=needIPARelease=1" >>$GITHUB_OUTPUT
+echo "appName=$(echo "$output" | jq -r '.appName')" >>$GITHUB_OUTPUT
+echo "appBundleId=$(echo "$output" | jq -r '.appBundleId')" >>$GITHUB_OUTPUT
+echo "appVer=$(echo "$output" | jq -r '.appVer')" >>$GITHUB_OUTPUT
+echo "appId=$(echo "$output" | jq -r '.appId')" >>$GITHUB_OUTPUT
+echo "appId=$(echo "$output" | jq -r '.appId')" >>$GITHUB_OUTPUT
           else
             echo "Unknown Operation: $op"
           fi
