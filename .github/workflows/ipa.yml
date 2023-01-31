@@ -107,7 +107,7 @@ jobs:
               output=$(python3 ipatool-py/main.py --json download -o ipaDown -s http://127.0.0.1:9000 --appId ${{ github.event.inputs.id }} $appVerCmd)
             fi
             echo "Got Downloading JSON result: $output"
-echo "set-output name=needIPARelease=1" >>$GITHUB_OUTPUT
+echo "needIPARelease=1" >>$GITHUB_OUTPUT
 echo "appName=$(echo "$output" | jq -r '.appName')" >>$GITHUB_OUTPUT
 echo "appBundleId=$(echo "$output" | jq -r '.appBundleId')" >>$GITHUB_OUTPUT
 echo "appVer=$(echo "$output" | jq -r '.appVer')" >>$GITHUB_OUTPUT
